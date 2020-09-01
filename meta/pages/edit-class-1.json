@@ -1,0 +1,100 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "data": "${class1}",
+                  "events": {
+                    "cancel": [
+                      {
+                        "type": "back"
+                      }
+                    ],
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Class1",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "conDb.updateClass1",
+                        "parameters": [
+                          {
+                            "name": "ClassID",
+                            "value": "${parameters.ClassID}"
+                          },
+                          {
+                            "name": "Class1",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "property": "ClassName",
+                      "required": true,
+                      "title": "Class Name",
+                      "type": "string",
+                      "maxLength": 50,
+                      "requiredText": "is required"
+                    }
+                  ],
+                  "name": "form0",
+                  "type": "form",
+                  "visible": "class1"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "conDb.getClass1ByClassID",
+        "parameters": [
+          {
+            "name": "ClassID",
+            "value": "${parameters.ClassID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "class1",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Class 1",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "data": "${student}",
+                  "events": {
+                    "cancel": [
+                      {
+                        "type": "back"
+                      }
+                    ],
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Student",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "conDb.updateStudent",
+                        "parameters": [
+                          {
+                            "name": "StudentID",
+                            "value": "${parameters.StudentID}"
+                          },
+                          {
+                            "name": "Student",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "maxLength": 50,
+                      "property": "FirstName",
+                      "required": true,
+                      "requiredText": "First Name is required",
+                      "title": "First Name",
+                      "type": "string"
+                    },
+                    {
+                      "maxLength": 50,
+                      "property": "MiddleName",
+                      "required": false,
+                      "requiredText": "Middle Name is Required",
+                      "title": "Middle Name",
+                      "type": "string"
+                    },
+                    {
+                      "maxLength": 50,
+                      "property": "Surname",
+                      "required": true,
+                      "requiredText": "Surname is Required",
+                      "title": "Surname",
+                      "type": "string"
+                    },
+                    {
+                      "data": "${getGendersResult}",
+                      "placeholder": "Choose Gender",
+                      "property": "GenderID",
+                      "required": true,
+                      "requiredText": "is required",
+                      "textProperty": "Gender1",
+                      "title": "Gender",
+                      "type": "lookup",
+                      "valueProperty": "GenderID"
+                    },
+                    {
+                      "property": "Photo",
+                      "required": true,
+                      "requiredText": "Student Photo is Required",
+                      "title": "Photo",
+                      "type": "file",
+                      "chooseText": "Choose"
+                    },
+                    {
+                      "data": "${getClass1sResult}",
+                      "placeholder": "Student's Current Class",
+                      "property": "CurrentClassID",
+                      "required": true,
+                      "requiredText": "Current Class is Required",
+                      "textProperty": "ClassName",
+                      "title": "Current Class",
+                      "type": "lookup",
+                      "valueProperty": "ClassID"
+                    }
+                  ],
+                  "name": "form0",
+                  "type": "form",
+                  "visible": "student"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "error": [],
+        "name": "conDb.getStudentByStudentID",
+        "parameters": [
+          {
+            "name": "StudentID",
+            "value": "${parameters.StudentID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "student",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "conDb.getGenders",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getGendersResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "conDb.getClass1s",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getClass1sResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Edit Student"
+}

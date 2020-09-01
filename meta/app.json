@@ -1,0 +1,64 @@
+{
+  "dataSources": [
+    "conDb"
+  ],
+  "generator": "@radzen/angular-generator",
+  "https": false,
+  "ignore": [
+    ""
+  ],
+  "layouts": [
+    "Login",
+    "Main"
+  ],
+  "logo": "",
+  "name": "StudentRegistration",
+  "navigation": [
+    "Class 1 S",
+    "Genders",
+    "Students"
+  ],
+  "pages": [
+    "Class 1 S",
+    "Add Class 1",
+    "Edit Class 1",
+    "Genders",
+    "Add Gender",
+    "Edit Gender",
+    "Students",
+    "Add Student",
+    "Edit Student",
+    "Application Users",
+    "Application Roles",
+    "Register Application User",
+    "Login",
+    "Add Application Role",
+    "Add Application User",
+    "Edit Application User",
+    "Profile",
+    "Unauthorized"
+  ],
+  "port": 8000,
+  "security": {
+    "autoGeneratePages": true,
+    "dataSource": "conDb",
+    "duration": 5,
+    "emailConfirmation": false,
+    "layout": "Main",
+    "loginLayout": "Login",
+    "provider": "default",
+    "smtpFrom": "",
+    "smtpPassword": "",
+    "smtpSSL": false,
+    "smtpServer": "",
+    "smtpUser": "",
+    "loginPage": "Login"
+  },
+  "serverLang": "cs",
+  "serverPort": 5000,
+  "serverProject": true,
+  "serverVersion": "3",
+  "startPage": "Class 1 S",
+  "theme": "humanistic",
+  "themeSettings": null
+}

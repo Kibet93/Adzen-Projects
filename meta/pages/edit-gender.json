@@ -1,0 +1,100 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "data": "${gender}",
+                  "events": {
+                    "cancel": [
+                      {
+                        "type": "back"
+                      }
+                    ],
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Gender",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "conDb.updateGender",
+                        "parameters": [
+                          {
+                            "name": "GenderID",
+                            "value": "${parameters.GenderID}"
+                          },
+                          {
+                            "name": "Gender",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "property": "Gender1",
+                      "required": false,
+                      "title": "Gender",
+                      "type": "string",
+                      "maxLength": 50,
+                      "requiredText": "is required"
+                    }
+                  ],
+                  "name": "form0",
+                  "type": "form",
+                  "visible": "gender"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "conDb.getGenderByGenderID",
+        "parameters": [
+          {
+            "name": "GenderID",
+            "value": "${parameters.GenderID}"
+          }
+        ],
+        "then": [
+          {
+            "name": "gender",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "error": [],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Gender",
+  "layout": "Main",
+  "access": [
+    "Authenticated"
+  ]
+}

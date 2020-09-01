@@ -1,0 +1,150 @@
+{
+  "access": [
+    "Authenticated"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "components": [
+            {
+              "class": "col-md-12",
+              "components": [
+                {
+                  "data": "",
+                  "events": {
+                    "cancel": [
+                      {
+                        "type": "back"
+                      }
+                    ],
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to create new Student!",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "conDb.createStudent",
+                        "parameters": [
+                          {
+                            "name": "Student",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "maxLength": 50,
+                      "property": "FirstName",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "First Name",
+                      "type": "string"
+                    },
+                    {
+                      "maxLength": 50,
+                      "property": "MiddleName",
+                      "required": false,
+                      "requiredText": "is required",
+                      "title": "Middle Name",
+                      "type": "string"
+                    },
+                    {
+                      "maxLength": 50,
+                      "property": "Surname",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "Surname",
+                      "type": "string"
+                    },
+                    {
+                      "data": "${getGendersResult}",
+                      "placeholder": "Choose Gender",
+                      "property": "GenderID",
+                      "required": true,
+                      "requiredText": "is required",
+                      "textProperty": "Gender1",
+                      "title": "Gender",
+                      "type": "lookup",
+                      "valueProperty": "GenderID"
+                    },
+                    {
+                      "chooseText": "Upload Photo",
+                      "property": "Photo",
+                      "required": true,
+                      "requiredText": "is required",
+                      "title": "Photo",
+                      "type": "file"
+                    },
+                    {
+                      "data": "${getClass1sResult}",
+                      "placeholder": "Choose Class1",
+                      "property": "CurrentClassID",
+                      "required": true,
+                      "requiredText": "is required",
+                      "textProperty": "ClassName",
+                      "title": "Current Class",
+                      "type": "lookup",
+                      "valueProperty": "ClassID"
+                    }
+                  ],
+                  "name": "form0",
+                  "style": {
+                    "width": "490px"
+                  },
+                  "type": "form"
+                }
+              ],
+              "type": "col"
+            }
+          ],
+          "type": "row"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "conDb.getGenders",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getGendersResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "conDb.getClass1s",
+        "parameters": [],
+        "then": [
+          {
+            "name": "getClass1sResult",
+            "type": "set",
+            "value": "${result.value}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "layout": "Main",
+  "name": "Add Student"
+}

@@ -1,0 +1,20 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-form #form0 [data]="student" *ngIf="student" (cancel)="form0Cancel($event)" (submit)="form0Submit($event)">
+        <rz-string-form-field [maxLength]="50" property="FirstName" [required]="true" requiredText="First Name is required" title="First Name" type="string">
+        </rz-string-form-field>
+        <rz-string-form-field [maxLength]="50" property="MiddleName" [required]="false" requiredText="Middle Name is Required" title="Middle Name" type="string">
+        </rz-string-form-field>
+        <rz-string-form-field [maxLength]="50" property="Surname" [required]="true" requiredText="Surname is Required" title="Surname" type="string">
+        </rz-string-form-field>
+        <rz-lookup-form-field [data]="getGendersResult" placeholder="Choose Gender" property="GenderID" [required]="true" requiredText="is required" textProperty="Gender1" title="Gender" valueProperty="GenderID" type="lookup">
+        </rz-lookup-form-field>
+        <rz-file-form-field property="Photo" [required]="true" requiredText="Student Photo is Required" title="Photo" chooseText="Choose" type="file">
+        </rz-file-form-field>
+        <rz-lookup-form-field [data]="getClass1sResult" placeholder="Student's Current Class" property="CurrentClassID" [required]="true" requiredText="Current Class is Required" textProperty="ClassName" title="Current Class" valueProperty="ClassID" type="lookup">
+        </rz-lookup-form-field>
+      </rz-form>
+    </div>
+  </div>
+</rz-content>

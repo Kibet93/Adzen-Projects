@@ -1,0 +1,20 @@
+<rz-content #content1 container="main">
+  <div class="row">
+    <div class="col-md-12">
+      <rz-form #form0 [style]="{'width': '490px'}" (cancel)="form0Cancel($event)" (submit)="form0Submit($event)">
+        <rz-string-form-field [maxLength]="50" property="FirstName" [required]="true" requiredText="is required" title="First Name" type="string">
+        </rz-string-form-field>
+        <rz-string-form-field [maxLength]="50" property="MiddleName" [required]="false" requiredText="is required" title="Middle Name" type="string">
+        </rz-string-form-field>
+        <rz-string-form-field [maxLength]="50" property="Surname" [required]="true" requiredText="is required" title="Surname" type="string">
+        </rz-string-form-field>
+        <rz-lookup-form-field [data]="getGendersResult" placeholder="Choose Gender" property="GenderID" [required]="true" requiredText="is required" textProperty="Gender1" title="Gender" valueProperty="GenderID" type="lookup">
+        </rz-lookup-form-field>
+        <rz-file-form-field chooseText="Upload Photo" property="Photo" [required]="true" requiredText="is required" title="Photo" type="file">
+        </rz-file-form-field>
+        <rz-lookup-form-field [data]="getClass1sResult" placeholder="Choose Class1" property="CurrentClassID" [required]="true" requiredText="is required" textProperty="ClassName" title="Current Class" valueProperty="ClassID" type="lookup">
+        </rz-lookup-form-field>
+      </rz-form>
+    </div>
+  </div>
+</rz-content>
